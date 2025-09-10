@@ -23,9 +23,20 @@ test {
 }
 
 publishing {
+    repositories {
+        maven {
+            name = "brave4j"
+            url = uri("https://maven.pkg.github.com/scionaltera/brave4j")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+
     publications {
-        mavenJava(MavenPublication) {
-            from components.java
+        gpr(MavenPublication) {
+            artifact jar
         }
     }
 }
