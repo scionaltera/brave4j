@@ -1,8 +1,9 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
-group = 'com.agonyforge.brave4j'
+group = 'com.agonyforge'
 version = '0.0.1-SNAPSHOT'
 
 repositories {
@@ -19,4 +20,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
 }
