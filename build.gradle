@@ -22,6 +22,15 @@ test {
     useJUnitPlatform()
 }
 
+jar {
+    manifest {
+        attributes(
+                'Implementation-Title': 'Brave4J',
+                'Implemenation-Version': getArchiveVersion()
+        )
+    }
+}
+
 publishing {
     repositories {
         maven {
